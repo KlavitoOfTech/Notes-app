@@ -1,25 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import LandingPage from "./components/LandingPage"; // ✅ Import Landing Page
+import NotesApp from "./NotesApp"; // ✅ Rename your existing App component to NotesApp
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default function App() {
+    return (
+        <Routes>
+            <Route path="/" element={<LandingPage />} />  {/* ✅ Landing Page */}
+            <Route path="/app" element={<NotesApp />} />  {/* ✅ Notes App */}
+        </Routes>
+    );
 }
-
-export default App;

@@ -1,0 +1,101 @@
+/* General Styles */
+.landing-container {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    color: #333;
+}
+
+/* Header */
+.landing-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.landing-header .logo {
+    height: 50px;
+}
+
+.landing-header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.landing-header nav ul li {
+    display: inline;
+}
+
+.landing-header .login-btn {
+    padding: 10px 20px;
+    background-color: #f50ac2;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+    background-color: #f4f4f4;
+}
+
+.hero-content {
+    max-width: 50%;
+    text-align: left;
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    color: #f50ac2;
+}
+
+.cta-btn {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #f50ac2;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+/* Features Section */
+.features {
+    padding: 50px;
+    background-color: white;
+}
+
+.features h2 {
+    color: #f50ac2;
+}
+
+.features-grid {
+    display: flex;
+    justify-content: space-around;
+}
+
+.feature-item {
+    max-width: 30%;
+}
+
+/* CTA Section */
+.cta {
+    padding: 50px;
+    background-color: #f50ac2;
+    color: white;
+}
+
+/* Navbar links (removes blue color & underline) */
+nav ul li a {
+    text-decoration: none; /* Removes underline */
+    color: #f50ac2; /* White text */
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
