@@ -2,6 +2,7 @@ import { useState } from "react";
 import { auth, googleProvider } from "../firebase";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import logo from "../notes-logo.jpg"; // Your logo path
 import "../styles/signup.css";
 
 const AuthPage = () => {
@@ -37,16 +38,16 @@ const AuthPage = () => {
 
   return (
     <div className="signup-container">
-      <h2>{isSignUp ? "Sign Up" : "Login"}</h2>
-      <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
-      <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
-      <button className="signup-btn" onClick={handleAuth}>
-        {isSignUp ? "Sign Up" : "Login"}
-      </button>
-      <button className="google-btn" onClick={signInWithGoogle}>Sign in with Google</button>
-      <p onClick={() => setIsSignUp(!isSignUp)} className="toggle-auth">
-        {isSignUp ? "Already have an account? Login" : "Don't have an account? Sign Up"}
-      </p>
+        <span><img src={logo} alt="App Logo" className="logo" /><h2>{isSignUp ? "Sign Up" : "Login"}</h2></span>
+        <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
+        <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
+        <button className="signup-btn" onClick={handleAuth}>
+            {isSignUp ? "Sign Up" : "Login"}
+        </button>
+        <button className="google-btn" onClick={signInWithGoogle}>Sign in with Google</button>
+        <p onClick={() => setIsSignUp(!isSignUp)} className="toggle-auth">
+            {isSignUp ? "Already have an account? Login" : "Don't have an account? Sign Up"}
+        </p>
     </div>
   );
 };
