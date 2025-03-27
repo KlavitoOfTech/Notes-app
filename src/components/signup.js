@@ -1,0 +1,54 @@
+import { useState } from "react";
+import { auth, googleProvider } from "../firebase";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import "../styles/signup.css";
+
+const AuthPage = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isSignUp, setIsSignUp] = useState(true); // Toggle between Signup and Login
+  const navigate = useNavigate();
+
+  const handleAuth = async () => {
+    try {
+      if (isSignUp) {
+        await createUserWithEmailAndPassword(auth, email, password);
+        alert("Signup successful!");
+      } else {
+        await signInWithEmailAndPassword(auth, email, password);
+        alert("Login successful!");
+      }
+      navigate("/dashboard"); // Redirect after signup/login
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
+  const signInWithGoogle = async () => {
+    try {
+      await signInWithPopup(auth, googleProvider);
+      alert("Google Sign-In successful!");
+      navigate("/dashboard"); // Redirect after Google login
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
+  return (
+    <div className="signup-container">
+      <h2>{isSignUp ? "Sign Up" : "Login"}</h2>
+      <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
+      <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
+      <button className="signup-btn" onClick={handleAuth}>
+        {isSignUp ? "Sign Up" : "Login"}
+      </button>
+      <button className="google-btn" onClick={signInWithGoogle}>Sign in with Google</button>
+      <p onClick={() => setIsSignUp(!isSignUp)} className="toggle-auth">
+        {isSignUp ? "Already have an account? Login" : "Don't have an account? Sign Up"}
+      </p>
+    </div>
+  );
+};
+
+export default AuthPage;

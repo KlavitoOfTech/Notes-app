@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "../LandingPage.css"; // Add styles separately
+import "../styles/LandingPage.css"; // Add styles separately
 import logo from "../notes-logo.jpg"; // Your logo path
-import illustration from "../notes-illustration.jpg"
+import illustration from "../notes-illustration.jpg";
+import Signup from "./signup"; // Import the Signup component
 
 export default function LandingPage() {
+    const [showSignup, setShowSignup] = useState(false); // Control signup form visibility
+
     return (
         <div className="landing-container">
             {/* Header Section */}
@@ -14,7 +17,7 @@ export default function LandingPage() {
                     <ul>
                         <li><a href="#features">Features</a></li>
                         <li><a href="#about">About</a></li>
-                        <li><Link to="/app" className="login-btn">Sign In</Link></li>
+                        <li><Link to="/signup" className="login-btn">Sign Up</Link></li>
                     </ul>
                 </nav>
             </header>
@@ -54,7 +57,17 @@ export default function LandingPage() {
             <section className="cta">
                 <h2>We help you take better notes!</h2>
                 <p>Join thousands of users who improve their productivity with Notes Taking.</p>
-                <Link to="/app" className="cta-btn">Get Started</Link>
+
+                {/* Show Signup Button only if showSignup is false */}
+                {!showSignup && (
+                    <button onClick={() => setShowSignup(true)} className="cta-btn">
+                        Sign Up
+                    </button>
+                )}
+
+                {/* Show Signup Form if showSignup is true */}
+                {showSignup && <Signup />}
+                <p>© 2025 · Designed & Built with Love❤️</p>
             </section>
         </div>
     );
