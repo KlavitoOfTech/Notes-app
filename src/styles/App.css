@@ -61,6 +61,21 @@ button:focus {
     padding: 1rem;
 }
 
+/* Delete button */
+.delete-btn {
+    background: none;
+    border: none;
+    color: #f50ac2;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 5px;
+    transition: color 0.2s ease-in-out;
+}
+
+.delete-btn:hover {
+    color: #dd0aaf;
+}
+
 .editor {
     width: 80%;
     height: 100vh;
