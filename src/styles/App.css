@@ -1,15 +1,15 @@
+/* General Reset */
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    margin: 0;
-    padding: 0;
+html, body {
+    width: 100vw;
+    height: 100vh;
     font-family: 'Karla', sans-serif;
-}
-
-button:focus {
-    outline: none;
+    overflow: hidden; /* Prevent unwanted scrolling */
 }
 
 .ql-editor p,
@@ -23,25 +23,49 @@ button:focus {
     /* padding: 10px; */
 }
 
-.sidebar {
-    width: 20%;
+/* Main Container */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
     height: 100vh;
 }
 
-.sidebar--note {
-    /* display: flex; */
+/* Header */
+.app-header {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f50ac2;
+    color: white;
+    height: 60px;
+    width: 100%;
 }
 
+/* Logo Styling */
+.logo {
+    height: 40px;
+    margin-right: 15px;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 20%;
+    height: calc(100vh - 60px); /* Adjust height minus header */
+    background-color: white;
+    overflow-y: auto;
+}
+
+/* Sidebar Header */
 .sidebar--header {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid lightgray;
 }
 
-.sidebar--header > h3 {
-    font-size: 1.75rem;
-}
-
+/* Notes Button */
 .new-note {
     cursor: pointer;
     background-color: #f50ac2;
@@ -59,54 +83,6 @@ button:focus {
     color: white;
     border-radius: 3px;
     padding: 1rem;
-}
-
-.trash-icon {
-    cursor: pointer;
-}
-
-.gg-trash {
-    box-sizing: border-box;
-    position: relative;
-    display: block;
-    transform: scale(var(--ggs, 1));
-    width: 10px;
-    height: 12px;
-    border: 2px solid transparent;
-    box-shadow: 
-        0 0 0 2px,
-        inset -2px 0 0,
-        inset 2px 0 0;
-    border-bottom-left-radius: 1px;
-    border-bottom-right-radius: 1px;
-    margin-top: 4px;
-}
-
-.gg-trash::after,
-.gg-trash::before {
-    content: "";
-    display: block;
-    position: absolute;
-    box-sizing: border-box;
-}
-
-.gg-trash::after {
-    background: currentColor;
-    border-radius: 3px;
-    width: 16px;
-    height: 2px;
-    top: -4px;
-    left: -5px;
-}
-
-.gg-trash::before {
-    width: 10px;
-    height: 4px;
-    border: 2px solid;
-    border-bottom: transparent;
-    border-top-left-radius: 2px;
-    border-bottom-right-radius: 2px;
-    top: -7px;
 }
 
 .editor {
@@ -138,31 +114,58 @@ button:focus {
     border-bottom: 1px solid lightgray;
 }
 
+/* Trash Icon */
+.trash-icon {
+    cursor: pointer;
+}
+
+/* Editor Container (Fills Remaining Space) */
+.editor-container {
+    flex: 1;
+    display: flex;
+    width: 100%;
+}
+
+/* Notes Editor */
+.editor {
+    width: 80%;
+    height: calc(100vh - 60px); /* Adjust height minus header */
+    overflow-y: auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
 .text-snippet {
     padding-inline: 5px;
     font-size: 0.8rem;
     font-weight: 400;
     line-height: 1.2rem;
-    color: #f50ac2;
+    color: #4A4E74;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
+/* Notes Empty State */
+.no-notes {
+    width: 100%;
+    height: calc(100vh - 60px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: whitesmoke;
+}
+
+/* Sidebar Notes */
+.note-summary {
+    padding: 10px;
+    border-bottom: 1px solid lightgray;
+    cursor: pointer;
+}
+
 .selected-note {
     background-color: #f50ac2;
-}
-
-.selected-note .text-snippet {
-    color: white;
-    font-weight: 700;
-}
-
-.gutter {
-    background-color: #eee;
-
-    background-repeat: no-repeat;
-    background-position: 50%;
 }
 
 .gutter.gutter-horizontal {
@@ -173,8 +176,9 @@ button:focus {
     cursor: col-resize;
 }
 
-.split {
-    display: flex;
+.selected-note .text-snippet {
+    color: white;
+    font-weight: 700;
 }
 
 .no-notes {
@@ -187,36 +191,91 @@ button:focus {
     background-color: whitesmoke;
 }
 
-/* App Container */
-.app-container {
+.note-item {
     display: flex;
-    flex-direction: column;
-    height: 100vh;
+    position: relative;
+    align-items: center;  /* Aligns text & elements vertically */
+    justify-content: space-between;  /* Ensures proper spacing */
+    padding: 12px 20px;  /* Add spacing inside the note */
+    background-color: #f50ac2;
+    border-bottom: 30px solid #fff;  /* Creates a separation */
+    cursor: pointer;
+    width: 100%;  /* Ensures it spans the full width */
+    box-sizing: border-box;  /* Ensures padding is included in width */
 }
 
-/* Header Styling */
-.app-header {
-    display: flex;
-    align-items: center;
-    padding: 10px 20px;
+.selected-note {
     background-color: #f50ac2;
     color: white;
-    height: 60px;
 }
 
-/* Logo Styling */
-.logo {
-    height: 40px;
-    margin-right: 15px;
+.delete-btn {
+    display: none;
+    background: none;
+    border: none;
 }
 
-/* Editor should take up the remaining space */
-.editor-container {
-    flex: 1;
+.title:hover > .delete-btn {
+    display: block;
+}
+
+.trash-icon {
+    cursor: pointer;
+}
+
+ .gg-trash {
+    box-sizing: border-box;
+    position: relative;
+    display: block;
+    transform: scale(var(--ggs,1));
+    width: 10px;
+    height: 12px;
+    border: 2px solid transparent;
+    box-shadow:
+        0 0 0 2px,
+        inset -2px 0 0,
+        inset 2px 0 0;
+    border-bottom-left-radius: 1px;
+    border-bottom-right-radius: 1px;
+    margin-top: 4px
+}
+
+.gg-trash::after,
+.gg-trash::before {
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    position: absolute
+}
+
+.gg-trash::after {
+    background: currentColor;
+    border-radius: 3px;
+    width: 16px;
+    height: 2px;
+    top: -4px;
+    left: -5px
+}
+
+.gg-trash::before {
+    width: 10px;
+    height: 4px;
+    border: 2px solid;
+    border-bottom: transparent;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    top: -7px;
+    left: -2px
+} 
+/* Split Pane (for resizable sidebar/editor) */
+.split {
     display: flex;
+    width: 100%;
+    height: calc(100vh - 60px);
 }
 
-.notes-header {
-    color: #f50ac2;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.gutter {
+    background-color: #eee;
+    cursor: col-resize;
+    width: 5px;
 }
