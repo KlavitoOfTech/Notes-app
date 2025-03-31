@@ -1,14 +1,29 @@
-/* General Styles */
-
-
-.landing-container {
-    width: 100%;  /* Takes full width */
-    min-height: 100vh;  /* Covers the full viewport height */
-    display: flex;
-    flex-direction: column;
+/* Reset default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif; /* Modern font */
 }
 
-/* Header */
+html, body {
+    width: 100%;
+    height: 100%;
+    background-color: #f8f8f8;
+    overflow-x: hidden;
+}
+
+/* ✅ Landing Container - Scrollable */
+.landing-container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+/* ✅ Header - Fixed Top */
 .landing-header {
     display: flex;
     justify-content: space-between;
@@ -19,17 +34,17 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 80px; /* Set header height */
+    height: 80px;
     z-index: 1000;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Push content down so it doesn’t overlap header */
+/* ✅ Push content below header */
 .landing-container {
-    padding-top: 100px; /* Adjust based on header height */
+    padding-top: 100px;
 }
 
-/* Logo */
+/* ✅ Logo & Branding */
 .landing-header .brand {
     display: flex;
     align-items: center;
@@ -46,7 +61,7 @@
     color: #f50ac2;
 }
 
-/* Navigation */
+/* ✅ Navigation */
 .landing-header nav ul {
     list-style: none;
     display: flex;
@@ -67,32 +82,47 @@
     transition: color 0.3s ease-in-out;
 }
 
+.landing-header nav ul li a:hover {
+    color: #c407a3;
+}
+
+/* ✅ Sign Up Button */
 .landing-header .login-btn {
     padding: 10px 20px;
     background-color: #f50ac2;
     color: white;
     border-radius: 5px;
     text-decoration: none;
+    transition: background 0.3s ease-in-out;
 }
 
-/* Hero Section */
+.landing-header .login-btn:hover {
+    background-color: #c407a3;
+}
+
+/* ✅ Hero Section */
 .hero {
-    margin-top: 250px; /* Adjust to move the section downward */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 50px;
+    padding: 100px 50px;
     background-color: #f4f4f4;
+    text-align: left;
 }
 
 .hero-content {
     max-width: 50%;
-    text-align: left;
 }
 
 .hero-content h1 {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     color: #f50ac2;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    color: #333;
 }
 
 .cta-btn {
@@ -103,39 +133,99 @@
     text-decoration: none;
     border-radius: 5px;
     margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background 0.3s ease-in-out;
 }
 
-/* Features Section */
+.cta-btn:hover {
+    background-color: #c407a3;
+}
+
+/* ✅ Hero Image */
+.hero-image img {
+    width: 450px;
+    max-width: 100%;
+}
+
+/* ✅ Features Section */
 .features {
-    padding: 50px;
+    padding: 80px 50px;
     background-color: white;
+    text-align: center;
 }
 
 .features h2 {
     color: #f50ac2;
+    font-size: 2rem;
+    margin-bottom: 30px;
 }
 
 .features-grid {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    gap: 30px;
+    flex-wrap: wrap;
 }
 
 .feature-item {
     max-width: 30%;
+    background: #f8f8f8;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
 }
 
-/* CTA Section */
+.feature-item:hover {
+    transform: scale(1.05);
+}
+
+.feature-item h3 {
+    color: #f50ac2;
+    font-size: 1.5rem;
+}
+
+.feature-item p {
+    color: #333;
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+/* ✅ Call-to-Action Section */
 .cta {
-    padding: 50px;
+    padding: 80px 50px;
     background-color: #f50ac2;
     color: white;
+    text-align: center;
 }
 
-/* Navbar links (removes blue color & underline) */
-nav ul li a {
-    text-decoration: none;
-    color: #f50ac2;
-    font-size: 18px;
-    font-weight: bold;
-    transition: color 0.3s ease-in-out;
+.cta h2 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+}
+
+.cta p {
+    font-size: 1.2rem;
+}
+
+/* ✅ Responsive Design */
+@media screen and (max-width: 900px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-content {
+        max-width: 80%;
+    }
+
+    .features-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .feature-item {
+        max-width: 90%;
+    }
 }
