@@ -5,13 +5,6 @@
     box-sizing: border-box;
 }
 
-html, body {
-    width: 100vw;
-    height: 100vh;
-    font-family: 'Karla', sans-serif;
-    overflow: hidden; /* Prevent unwanted scrolling */
-}
-
 .ql-editor p,
 .ql-editor.ql-blank::before {
     font-size: 1.3em;

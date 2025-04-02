@@ -7,20 +7,23 @@
     font-family: 'Poppins', sans-serif; /* Modern font */
 }
 
-html, body {
+body {
     width: 100%;
     height: 100%;
     background-color: #f8f8f8;
     overflow-x: hidden;
+    overflow-y: auto;
 }
 
 /* ✅ Landing Container - Scrollable */
 .landing-container {
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    overflow-y: auto;
+    z-index: 500;
+    position: relative;
+    top: -20px;
 }
 
 /* ✅ Header - Fixed Top */

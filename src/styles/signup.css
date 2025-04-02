@@ -1,4 +1,4 @@
-body, html {
+body{
   margin: 0;
   padding: 0;
   width: 100%;
@@ -6,12 +6,14 @@ body, html {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f4f4f4;
+  background-color: #f8f8f8;
   font-family: Arial, sans-serif;
 }
 
 h2 {
   color: #f50ac2;
+  margin-bottom: 24px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .container {
@@ -24,7 +26,7 @@ h2 {
 
 .signup-box {
   display: flex;
-  width: 80%;
+  width: 100%;
   max-width: 900px;
   height: 90vh;
   background: white;
@@ -44,12 +46,15 @@ h2 {
 
 .left-section {
   background: white;
+  position: relative;
 }
 
 .right-section {
-  background: linear-gradient(135deg, #f50ac2, #e908b8);
-  color: white;
-  text-align: center;
+  background-image: url('../notes-signup-logo-4.png');
+  background-size: contain; /* Stretches to fit, but use with caution */
+  width: 100%;
+  padding-top: 56.25%; /* 9/16 = 56.25% for 16:9 ratio */
+  position: relative;
 }
 
 .text-content h3 {
@@ -57,21 +62,12 @@ h2 {
   margin-bottom: 10px;
 }
 
-.shapes-container {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.shape {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-}
-
 .logo {
   width: 50px;
   margin-bottom: 10px;
+  top: 15px;
+  left: 15px;
+  position: absolute;
 }
 
 input {
@@ -104,9 +100,11 @@ button {
 .toggle-auth {
   color: #f50ac2;
   cursor: pointer;
+  margin-top: 30px;
 }
 
 .terms-text {
   font-size: 0.8rem;
   text-align: center;
+  margin-top: 40px;
 }

@@ -6,8 +6,7 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithP
 import { useNavigate } from "react-router-dom";
 import logo from "../notes-logo.jpg"; // Your logo path
 import "../styles/signup.css";
-import signuplogo from "../notes-signup-logo.png"; // Your logo path
-import signuplogo2 from "../notes-signup-logo-2.png"; // Your logo path
+
 
 const AuthPage = () => {
   const [email, setEmail] = useState("");
@@ -45,8 +44,6 @@ const AuthPage = () => {
       <div className="signup-box">
         <div className="left-section">
           <img src={logo} alt="App Logo" className="logo" />
-          <h2>Welcome to Uniquenote!</h2>
-          <p>Sign up and start taking notes.</p>
           <h2>{isSignUp ? "Sign Up" : "Login"}</h2>
           <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
           <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
@@ -63,12 +60,6 @@ const AuthPage = () => {
           </p>
         </div>
         <div className="right-section">
-        <img src={signuplogo2} alt="App Logo" className="signup-logo" />
-          <div className="text-content">
-            <h3>Work. School. Life.</h3>
-            <p>Remember everything</p>
-          </div>  
-          <img src={signuplogo} alt="App Logo" className="signup-logo" />
         </div>
       </div>
     </div>
