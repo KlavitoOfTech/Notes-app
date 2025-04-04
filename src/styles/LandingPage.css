@@ -55,15 +55,18 @@ body {
 }
 
 .landing-header .logo {
-    height: 50px;
+    height: 40px;
 }
 
 .landing-header .site-name {
     font-size: 22px;
     font-weight: bold;
     color: #f50ac2;
+    margin-left: 40px;
+    align-items: center;
+    justify-content: center;
 }
-
+  
 /* ✅ Navigation */
 .landing-header nav ul {
     list-style: none;
@@ -85,21 +88,22 @@ body {
     transition: color 0.3s ease-in-out;
 }
 
-.landing-header nav ul li a:hover {
+.landing-header nav ul li a:hover:not(.login-btn) {
     color: #c407a3;
 }
+
 
 /* ✅ Sign Up Button */
 .landing-header .login-btn {
     padding: 10px 20px;
     background-color: #f50ac2;
-    color: white;
+    color: #ffffff;
     border-radius: 5px;
     text-decoration: none;
-    transition: background 0.3s ease-in-out;
+    transition: color 0.3s ease-in-out;
 }
 
-.landing-header .login-btn:hover {
+.login-btn:hover {
     background-color: #c407a3;
 }
 

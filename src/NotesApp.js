@@ -15,10 +15,13 @@ export default function App() {
     );
     
     React.useEffect(() => {
-        // Save notes to localStorage whenever it changes
-        localStorage.setItem("notes", JSON.stringify(notes));
-    },[notes]);
-
+        if (notes.length > 0) {
+            localStorage.setItem("notes", JSON.stringify(notes));
+        } else {
+            localStorage.removeItem("notes"); // Remove from storage when empty
+        }
+    }, [notes]);
+    
     function createNewNote() {
         const newNote = {
             id: nanoid(),
@@ -51,6 +54,7 @@ export default function App() {
     function findCurrentNote() {
         return notes.find(note => note.id === currentNoteId) || notes[0];
     }
+    console.log("Notes:", notes);
 
     return (
         <div className="app-container">
